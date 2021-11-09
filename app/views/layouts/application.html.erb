@@ -6,10 +6,26 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+
+    <!-- Navbar -->
+    <div class="topnav" id="myTopnav">
+      <a href="<%= "/" %>" class="active">Home</a>
+      <a href="<%= listings_path %>">Listings</a>
+      <a href="#contact">Requests</a>
+      <a href="#about">Profile</a>
+      <a href="<%= new_user_session_path %>">Login</a>
+      <a href="<%= new_user_registration_path %>">Sign up</a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+
+    <!-- Flash will appear just under nav bar -->
     <% if flash[:notice] %>
     	<div class="notification is-primary global-notification">
   	  	<p class="notice"><%= notice %></p>
@@ -20,6 +36,20 @@
       <p class="alert"><%= alert %></p>
     </div>
     <% end %>
+
+    <!-- Individual pages will yield here -->
     <%= yield %>
+
+    <!-- Javascript needed for navbar -->
+    <script>
+      function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+          x.className += " responsive";
+        } else {
+          x.className = "topnav";
+        }
+      }
+      </script>
   </body>
 </html>
