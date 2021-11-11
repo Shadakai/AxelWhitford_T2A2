@@ -1,5 +1,7 @@
-<h1>New Listing</h1>
+<section class="section">
+    <div class = "container">
+        <h1 class="title is-2 has-text-centered">What potion would you like to sell?</h1>
+        <%= render 'form', listing: @listing %>
+    </div>
+</section>
 
-<%= render 'form', listing: @listing %>
-
-<%= link_to 'Back', listings_path %>

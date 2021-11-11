@@ -1,15 +1,27 @@
-
-<%= simple_form_for(@listing) do |f| %>
+<%= simple_form_for @listing, html: { multipart: true }  do |f| %>
   <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <div class="columns is-centered">
+    <div class="column is-half">
 
-  <div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.input :description %>
-    <%= f.input :price %>
-  </div>
+    <div class="field">
+      <div class="control">
+      	<%= f.input :title, label: "Title", input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+      </div>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+    <div class="field">
+    	<div class="control">
+      	<%= f.input :description, input_html: { class: "textarea"}, wrapper: false, label_html: { class: "label" } %>
+      </div>
+    </div>
+
+    <div class="field">
+    	<div class="control">
+      	<%= f.button :submit, class:"button is-primary" %>
+      </div>
+    </div>
   </div>
+</div>
+
+ 
 <% end %>
