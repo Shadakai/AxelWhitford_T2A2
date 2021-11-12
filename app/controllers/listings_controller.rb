@@ -23,7 +23,7 @@ class ListingsController < ApplicationController
   def create
     # have to pass user id
     @listing = Listing.new(listing_params)
-    render plain: listing_params
+    redirect_to listings_path
     begin
       @listing.save!
       redirect_to @listings
