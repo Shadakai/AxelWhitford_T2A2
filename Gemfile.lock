@@ -109,6 +109,10 @@ GEM
       warden (~> 1.2.3)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.7.6)
+    dotenv-rails (2.7.6)
+      dotenv (= 2.7.6)
+      railties (>= 3.2)
     em-websocket (0.5.2)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
@@ -313,6 +317,7 @@ DEPENDENCIES
   carrierwave
   cloudinary (~> 1.21)
   devise
+  dotenv-rails (~> 2.7)
   gravatar_image_tag
   guard (~> 2.14, >= 2.14.1)
   guard-livereload (~> 2.5, >= 2.5.2)
