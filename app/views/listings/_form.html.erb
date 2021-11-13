@@ -29,6 +29,10 @@
       </div>
     </div>
 
+    <% if @listing.potion_image.attached? %>
+      <%= image_tag @listing.potion_image %>
+    <% end %>
+
     <div class="field">
     	<div class="control">
       	<%= f.button :submit, class:"button is-primary" %>

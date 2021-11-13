@@ -1,9 +1,10 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: %i[ edit update destroy ]
 
   # GET /listings
   def index
-    @listings = Listing.all
+    @listings = Listing.all.order('created_at DESC')
   end
 
   # GET /listings/1 
@@ -12,7 +13,7 @@ class ListingsController < ApplicationController
 
   # GET /listings/new
   def new
-    @listing = Listing.new
+    @listing = current_user.listings.build
   end
 
   # GET /listings/1/edit
@@ -32,26 +33,14 @@ class ListingsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /listings/1 or /listings/1.json
+  # PATCH/PUT /listings/1 or /listings/1
   def update
-    respond_to do |format|
-      if @listing.update(listing_params)
-        format.html { redirect_to @listing, notice: "Listing was successfully updated." }
-        format.json { render :show, status: :ok, location: @listing }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @listing.errors, status: :unprocessable_entity }
-      end
-    end
+    @listing.update(listing_params)
   end
 
-  # DELETE /listings/1 or /listings/1.json
+  # DELETE /listings/1 or /listings/1
   def destroy
     @listing.destroy
-    respond_to do |format|
-      format.html { redirect_to listings_url, notice: "Listing was successfully destroyed." }
-      format.json { head :no_content }
-    end
   end
 
   private
