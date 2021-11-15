@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'comments/create'
+  get 'comments/destroy'
   get 'profile/index', to: 'profile#index', as: 'profile'
   get 'requests/index', to: 'requests#index', as: 'requests'
   get 'requests/new', to: 'requests#new', as: 'new_request'
