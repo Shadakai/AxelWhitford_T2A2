@@ -47,10 +47,7 @@
 			</div>
 			<div class="column is-3 is-offset-1">
 				<div class="nav panel show-listing-analytics">
-					<div class="panel-block views data">
-						<span class="icon"><i class="fa fa-eye"></i></span>
-						<%= pluralize(@listing.impressionist_count, 'View') %>
-					</div>
+					
 					<div class="panel-block comments data">
 						<span class="icon"><i class="fa fa-comment"></i></span>
 						<%= pluralize(@listing.comments.count, 'Comment') %>

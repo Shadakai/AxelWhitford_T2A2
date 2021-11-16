@@ -3,41 +3,39 @@
     <% @listings.each do |listing| %>
       <div class="listing-grid-item">
         <div class="listing-wrapper">
-
-          <%= link_to listing, class: 'listing' do %>
-            <%= image_tag(listing.potion_image)%> 
-            <div class="listing-data">
-              <h3 class="listing-title"><%= listing.title %></h3>
-              <div class="listing-description"><%= truncate(listing.description, length: 60) %></div>
-              <div class="listing-time">
-                <%= time_ago_in_words(listing.created_at) %>
-              </div>
-            </div>
-          <% end %>
-        </div>
-
-          <nav class="level listing-analytics">
-            <div class="level-left"></div>
-            <div class="level-right">
-              <div class="level-item views data">
-                <%= link_to listing do %>
-                  <span class="icon"> <i class="fa fa-eye"></i></span>
-                  0
-                <% end %>
-              </div>
-              <div class="level-item comments data">
-                <%= link_to shot do %>
-                  <span class="icon"><i class="fa fa-comment"></i></span>
-                   <%= shot.comments.count %>
-                <% end %>
-              </div>
-            </div>
-          </nav>
-
-          <div class="user-data">
-            <div class="user-name"> <%= listing.user.name %></div>
-          </div>
           
+        <%= link_to listing, class: "listing" do %>
+          <%= image_tag(listing.potion_image) %>
+          <div class="listing-data">
+            <h3 class="listing-title"><%= listing.title %></h3>
+            <div class="listing-description"><%= truncate(listing.description, length: 60) %></div>
+            <div class="listing-time">
+              <%= time_ago_in_words(listing.created_at) %>
+            </div>
+          </div>
+        <% end %>
+
+        <nav class="level listing-analytics">
+          <div class="level-left"></div>
+          <div class="level-right">
+            <div class="level-item views data">
+              <%= link_to listing do %>
+                <span class="icon"><i class="fa fa-eye"></i></span>
+                <%= 0 %>
+              <% end %>
+            </div>
+            <div class="level-item comments data">
+              <%= link_to listing do %>
+                <span class="icon"><i class="fa fa-comment"></i></span>
+                 <%= listing.comments.count %>
+              <% end %>
+            </div>
+          </div>
+        </nav>
+        </div>
+        <div class="user-data">
+          <div class="user-name"><%= listing.user.name %></div>
+        </div>
       </div>
     <% end %>
   </div>
