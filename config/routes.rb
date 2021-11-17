@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   # Route for search bar
   get '/search', to: 'listing#search'
 
-  # Route to buy 
-  get '/buy', to: 'orders#buy'
+  # Route to order
+  get '/buy/:listing_id', to: 'orders#buy', as: 'buy'
+  get '/success', to: 'orders#success', as: 'success'
+  get '/cancel', to: 'orders#cancel', as: 'cancel'
 
   # All routes for requests
   resources :requests
