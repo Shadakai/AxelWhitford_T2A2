@@ -6,4 +6,9 @@ class User < ApplicationRecord
 
   has_many :listings, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :carts
+
+  def cart
+    return Cart.find_by(user_id: id, completed: false) || Cart.create(user_id: id, completed: false, price: 0)
+  end
 end
