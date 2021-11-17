@@ -10,9 +10,6 @@ Rails.application.routes.draw do
   get '/success', to: 'orders#success', as: 'success'
   get '/cancel', to: 'orders#cancel', as: 'cancel'
 
-  # All routes for requests
-  resources :requests
-
   # Nest a comments route within the listings route example ~ Listing/1/comments
   resources :listings do 
     resources :comments
