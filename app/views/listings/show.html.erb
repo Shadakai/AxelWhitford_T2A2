@@ -56,7 +56,7 @@
 						<%= pluralize(@listing.comments.count, 'Comment') %>
 					</div>
 					<% if user_signed_in? %>
-						<%= link_to buy_path(@listing.id), class:"button is-primary"  do %>
+						<%= link_to buy_now_path(@listing.id), class:"button is-primary"  do %>
 							<span class="icon is-small"><i class="fa fa-upload"></i></span>
 							<span>Buy Potion</span>
 						<% end %>
