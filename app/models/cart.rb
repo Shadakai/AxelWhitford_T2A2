@@ -1,8 +1,8 @@
 class Cart < ApplicationRecord
     belongs_to :user
 
-    has_many :listing_carts
-    has_many :listings, through :listing_carts
+    has_many :listing_carts, dependent: :destroy
+    has_many :listings, through: :listing_carts
 
     validate :check_existing_carts
 

@@ -33,6 +33,8 @@ class OrdersController < ApplicationController
 
         def add_to_cart
             listing = Listing.find(params[:listing_id])
-            current_user.cart << listing
+            current_user.cart.listings << listing
+            flash[:notice] = 'Book added to cart'
+            redirect_to listing_path
         end
 end
