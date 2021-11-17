@@ -47,11 +47,22 @@
 			</div>
 			<div class="column is-3 is-offset-1">
 				<div class="nav panel show-listing-analytics">
-					
+					<div class="panel-block comments data">
+						<span class="icon"><i class="fa fa-eye"></i></span>
+						<%= pluralize(@listing.impressions.count, 'View') %>
+					</div>
 					<div class="panel-block comments data">
 						<span class="icon"><i class="fa fa-comment"></i></span>
 						<%= pluralize(@listing.comments.count, 'Comment') %>
 					</div>
+					<% if user_signed_in? %>
+						<%= link_to '/buy', class:"button is-primary"  do %>
+							<span class="icon is-small"><i class="fa fa-upload"></i></span>
+							<span>Buy Potion</span>
+						<% end %>
+					<% else %>
+						<div class="content"><%= link_to 'Sign in', new_user_session_path %> to buy.</div>
+					<% end %>
 				</div>
 			</div>
 		</div>

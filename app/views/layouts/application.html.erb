@@ -38,6 +38,15 @@
                 <%= link_to 'Requests', requests_path , class:"button is-dark" %>
               </p>
               <% end %>
+              <% if user_signed_in? %>
+              <div class="control is-dark button">
+                <%= form_with url: "/search", method: :get do |form| %>
+                  <%= form.label :find_potion %>
+                  <%= form.text_field :query %>
+                  <%= form.submit :search , input_html: { class:"button is-dark" }%>
+                <% end %>
+              </div>
+              <% end %>
             </div>
           </div>
         </div>

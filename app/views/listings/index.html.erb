@@ -5,9 +5,9 @@
         <div class="listing-wrapper">
           
         <%= link_to listing, class: "listing" do %>
+        <h3 class="listing-title"><%= listing.title %></h3>
           <%= image_tag(listing.potion_image) %>
           <div class="listing-data">
-            <h3 class="listing-title"><%= listing.title %></h3>
             <div class="listing-description"><%= truncate(listing.description, length: 60) %></div>
             <div class="listing-time">
               <%= time_ago_in_words(listing.created_at) %>
@@ -16,12 +16,14 @@
         <% end %>
 
         <nav class="level listing-analytics">
-          <div class="level-left"></div>
+          <div class="level-left">
+            <div class="listing-price"> <%= '$%0.2f' % [listing.price] %> </div>
+          </div>
           <div class="level-right">
             <div class="level-item views data">
               <%= link_to listing do %>
                 <span class="icon"><i class="fa fa-eye"></i></span>
-                <%= 0 %>
+                <%= listing.impressions.count %>
               <% end %>
             </div>
             <div class="level-item comments data">

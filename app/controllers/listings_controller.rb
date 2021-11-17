@@ -1,6 +1,7 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: %i[ edit update destroy ]
+  impressionist action: [:show], unique: [:impressionable_type, :impressionable_id, :session_hash]
 
   # GET /listings
   def index
@@ -18,6 +19,12 @@ class ListingsController < ApplicationController
 
   # GET /listings/1/edit
   def edit
+  end
+
+  #Get /search
+  def search 
+    @listings = Listing.where("title LIKE ?" , "%#{params[:query]}%")
+    render "index"
   end
 
   # POST /listings 

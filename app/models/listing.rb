@@ -1,4 +1,6 @@
 class Listing < ApplicationRecord
+    is_impressionable
+
     belongs_to :user
     has_many :comments, dependent: :destroy
 
