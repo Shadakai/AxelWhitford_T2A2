@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   # Route to order
   get '/buy/:listing_id', to: 'orders#buy', as: 'buy'
+  get 'add_to_cart/:listing_id', to: 'orders#add_to_cart', as: 'add_to_cart'
   get '/success', to: 'orders#success', as: 'success'
   get '/cancel', to: 'orders#cancel', as: 'cancel'
 

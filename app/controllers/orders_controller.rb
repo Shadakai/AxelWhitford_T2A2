@@ -30,4 +30,9 @@ class OrdersController < ApplicationController
 
         def cancel
         end
+
+        def add_to_cart
+            listing = Listing.find(params[:listing_id])
+            current_user.cart << listing
+        end
 end
