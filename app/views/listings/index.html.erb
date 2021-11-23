@@ -6,7 +6,11 @@
           
         <%= link_to listing, class: "listing" do %>
         <h3 class="listing-title"><%= listing.title %></h3>
-          <%= image_tag(listing.potion_image) %>
+        <% if listing.potion_image.attached? %>
+          <%= image_tag listing.potion_image %>
+        <% else %>
+          <%= image_tag "default.jpeg" %>
+        <% end %>
           <div class="listing-data">
             <div class="listing-description"><%= truncate(listing.description, length: 60) %></div>
             <div class="listing-time">

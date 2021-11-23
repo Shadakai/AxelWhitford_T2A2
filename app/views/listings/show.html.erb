@@ -15,7 +15,11 @@
 			<div class="column is-8">
 				<div class="listing-container">
 					<div class="listing-full">
-						 <%= image_tag @listing.potion_image unless @listing.potion_image.blank? %>
+						<% if @listing.potion_image.attached? %>
+						<%= image_tag @listing.potion_image %>
+					  <% else %>
+						<%= image_tag "default.jpeg" %>
+					  <% end %>
 					</div>
 
 					<% if user_signed_in? && (current_user.id == @listing.user_id) %>		
@@ -26,13 +30,16 @@
 					<% end %>
 
 					<div class="content">
+						<%= 'price: AU $%0.2f' % [@listing.price] %> 
+						<br>
+						<br>
 						<%= @listing.description %>
 					</div>
 
 					<section class="comments">
 						<h2 class="subtitle is-5"><%= pluralize(@listing.comments.count, 'Comment') %></h2>
 							<%= render @listing.comments %>
-						<hr />
+
 						<% if user_signed_in? %>
 							<div class="comment-form">
 								<h3 class="subtitle is-3">Leave a reply</h3>
@@ -56,14 +63,18 @@
 						<%= pluralize(@listing.comments.count, 'Comment') %>
 					</div>
 					<% if user_signed_in? %>
-						<%= link_to buy_now_path(@listing.id), class:"button is-primary"  do %>
-							<span class="icon is-small"><i class="fa fa-upload"></i></span>
-							<span>Buy Potion</span>
+					<div class="panel-block is-centered">
+						<%= link_to buy_now_path(@listing.id), class:"button"  do %>
+							<span class="icon is-small"><i class="fa fa-flask"></i></span>
+							<span class="has-text-white">Buy Now</span>
 						<% end %>
-						<%= link_to add_to_cart_path(@listing.id), class:"button is-primary"  do %>
-							<span class="icon is-small"><i class="fa fa-upload"></i></span>
-							<span>Add to cart</span>
+					</div>
+					<div class="panel-block is-centered">
+						<%= link_to add_to_cart_path(@listing.id), class:"button"  do %>
+							<span class="icon is-small"><i class="fa fa-shopping-cart"></i></span>
+							<span class="has-text-white">Add to cart</span>
 						<% end %>
+					</div>
 					<% else %>
 						<div class="content"><%= link_to 'Sign in', new_user_session_path %> to buy.</div>
 					<% end %>
