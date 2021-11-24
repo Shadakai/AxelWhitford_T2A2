@@ -1,3 +1,46 @@
-<h1> Your cart </h1>
+  <section class="section ">
+      <div class="columns">
 
-<%= link_to "buy", buy_path%>
+          <% @line_items.each do |line_item| %>
+          <div class="column is-full align-items-center">
+              <div class="column is-2 align-items-center">
+                  <figure class="is-128x128 image">
+                      <% if line_item.potion_image.attached? %>
+                      <%= image_tag line_item.potion_image %>
+                      <% else %>
+                      <%= image_tag "default.jpeg" %>
+                      <% end %>
+                  </figure>
+              </div>
+              <div class="column is-9">
+                  <strong><%= line_item.title %></strong>
+                  <div class="columns align-items-center">
+                      <div class="content column is-9">
+                          <%= truncate(line_item.description, length: 140) %>
+                          <br>
+                          <%= 'price: AU $%0.2f' % [line_item.price] %>
+                      </div>
+                  </div>
+              </div>
+          </div>
+              
+          </div>
+
+          <% end %>
+          <% price = 0 %>
+          <% @line_items.each do |line_item| %>
+          <% price += line_item.price %>
+          <% end %>
+
+          <div class="column is-full has-text-right">
+            <strong class="f4"><%= 'total price: AU $%0.2f' % price %> </strong>
+            
+                <%= link_to buy_path, class:"button"  do %>
+                <span class="icon is-small"><i class="fa fa-flask"></i></span>
+                <span class="has-text-white">Check Out</span>
+                <% end %>
+
+        </div>
+
+      </div>
+  </section>

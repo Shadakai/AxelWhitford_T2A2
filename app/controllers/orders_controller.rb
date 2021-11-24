@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
     def index 
-        @listing = current_user.cart.listings
+        @line_items = current_user.cart.listings
     end
 
     def buy 
@@ -35,6 +35,11 @@ class OrdersController < ApplicationController
         end
 
         def cancel
+        end
+
+        def destroy
+          @cart.destroy if @cart.id == session[:cart_id]
+          session[:cart_id] = nil
         end
 
         def add_to_cart

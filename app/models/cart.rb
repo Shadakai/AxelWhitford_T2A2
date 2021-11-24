@@ -13,4 +13,5 @@ class Cart < ApplicationRecord
             errors.add(:base, 'no')
         end
     end
+
 end
