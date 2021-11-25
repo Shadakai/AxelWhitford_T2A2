@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :destroy]
 
+  # Controler for comments
+
   def create
     # find the listing with the assoiciated ID. (should be the one you are in)
     @listing = Listing.find(params[:listing_id])

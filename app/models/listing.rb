@@ -1,4 +1,7 @@
 class Listing < ApplicationRecord
+
+    # Model for Listing
+
     is_impressionable
 
     belongs_to :user

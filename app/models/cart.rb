@@ -1,4 +1,7 @@
 class Cart < ApplicationRecord
+
+    # Model for Cart
+
     belongs_to :user
 
     has_many :listing_carts, dependent: :destroy
